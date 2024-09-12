@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище NasyrovTaskSeptemberModelContainer" CdmEntityContainer="NasyrovTaskSeptemberEntities">
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.OrderItems">
+        <MappingFragment StoreEntitySet="OrderItems">
+          <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="MenuItem" ColumnName="MenuItem" />
+          <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatusHistory">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.OrderStatusHistory">
+        <MappingFragment StoreEntitySet="OrderStatusHistory">
+          <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ChangedByUserID" ColumnName="ChangedByUserID" />
+          <ScalarProperty Name="ChangedAt" ColumnName="ChangedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Smena">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Smena">
+        <MappingFragment StoreEntitySet="Smena">
+          <ScalarProperty Name="SmenaID" ColumnName="SmenaID" />
+          <ScalarProperty Name="SmenaDate" ColumnName="SmenaDate" />
+          <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+          <ScalarProperty Name="CookID" ColumnName="CookID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSmena">
+      <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.UserSmena">
+        <MappingFragment StoreEntitySet="UserSmena">
+          <ScalarProperty Name="UserSmenaID" ColumnName="UserSmenaID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SmenaID" ColumnName="SmenaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

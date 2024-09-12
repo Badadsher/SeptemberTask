@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище NasyrovTaskSeptemberModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="OrderItemID" />
+          </Key>
+          <Property Name="OrderItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="MenuItem" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TableNumber" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WaiterID" Type="int" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChangedByUserID" Type="int" />
+          <Property Name="ChangedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Smena">
+          <Key>
+            <PropertyRef Name="SmenaID" />
+          </Key>
+          <Property Name="SmenaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SmenaDate" Type="date" Nullable="false" />
+          <Property Name="WaiterID" Type="int" />
+          <Property Name="CookID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSmena">
+          <Key>
+            <PropertyRef Name="UserSmenaID" />
+          </Key>
+          <Property Name="UserSmenaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="SmenaID" Type="int" />
+        </EntityType>
+        <Association Name="FK__OrderItem__Order__398D8EEE">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__WaiterID__33D4B598">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderStat__Chang__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OrderStatusHistory" Type="Self.OrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="OrderStatusHistory">
+              <PropertyRef Name="ChangedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderStat__Order__3C69FB99">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderStatusHistory" Type="Self.OrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderStatusHistory">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Smena__CookID__2D27B809">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Smena" Type="Self.Smena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Smena">
+              <PropertyRef Name="CookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Smena__WaiterID__2C3393D0">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Smena" Type="Self.Smena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Smena">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserSmena__Smena__30F848ED">
+          <End Role="Smena" Type="Self.Smena" Multiplicity="0..1" />
+          <End Role="UserSmena" Type="Self.UserSmena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smena">
+              <PropertyRef Name="SmenaID" />
+            </Principal>
+            <Dependent Role="UserSmena">
+              <PropertyRef Name="SmenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserSmena__UserI__300424B4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserSmena" Type="Self.UserSmena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserSmena">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище NasyrovTaskSeptemberModelContainer">
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatusHistory" EntityType="Self.OrderStatusHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smena" EntityType="Self.Smena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSmena" EntityType="Self.UserSmena" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OrderItem__Order__398D8EEE" Association="Self.FK__OrderItem__Order__398D8EEE">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__WaiterID__33D4B598" Association="Self.FK__Orders__WaiterID__33D4B598">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderStat__Chang__3E52440B" Association="Self.FK__OrderStat__Chang__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OrderStatusHistory" EntitySet="OrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderStat__Order__3C69FB99" Association="Self.FK__OrderStat__Order__3C69FB99">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderStatusHistory" EntitySet="OrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Smena__CookID__2D27B809" Association="Self.FK__Smena__CookID__2D27B809">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Smena" EntitySet="Smena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Smena__WaiterID__2C3393D0" Association="Self.FK__Smena__WaiterID__2C3393D0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Smena" EntitySet="Smena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserSmena__Smena__30F848ED" Association="Self.FK__UserSmena__Smena__30F848ED">
+            <End Role="Smena" EntitySet="Smena" />
+            <End Role="UserSmena" EntitySet="UserSmena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserSmena__UserI__300424B4" Association="Self.FK__UserSmena__UserI__300424B4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSmena" EntitySet="UserSmena" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NasyrovTaskSeptemberModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="OrderItemID" />
+          </Key>
+          <Property Name="OrderItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="MenuItem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableNumber" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderItem__Order__398D8EEE" FromRole="OrderItems" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WaiterID" Type="Int32" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OrderItems" Relationship="Self.FK__OrderItem__Order__398D8EEE" FromRole="Orders" ToRole="OrderItems" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Orders__WaiterID__33D4B598" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="OrderStatusHistory" Relationship="Self.FK__OrderStat__Order__3C69FB99" FromRole="Orders" ToRole="OrderStatusHistory" />
+        </EntityType>
+        <EntityType Name="OrderStatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedByUserID" Type="Int32" />
+          <Property Name="ChangedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderStat__Order__3C69FB99" FromRole="OrderStatusHistory" ToRole="Orders" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__OrderStat__Chang__3E52440B" FromRole="OrderStatusHistory" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Smena">
+          <Key>
+            <PropertyRef Name="SmenaID" />
+          </Key>
+          <Property Name="SmenaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmenaDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WaiterID" Type="Int32" />
+          <Property Name="CookID" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Smena__CookID__2D27B809" FromRole="Smena" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__Smena__WaiterID__2C3393D0" FromRole="Smena" ToRole="Users" />
+          <NavigationProperty Name="UserSmena" Relationship="Self.FK__UserSmena__Smena__30F848ED" FromRole="Smena" ToRole="UserSmena" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__WaiterID__33D4B598" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="OrderStatusHistory" Relationship="Self.FK__OrderStat__Chang__3E52440B" FromRole="Users" ToRole="OrderStatusHistory" />
+          <NavigationProperty Name="Smena" Relationship="Self.FK__Smena__CookID__2D27B809" FromRole="Users" ToRole="Smena" />
+          <NavigationProperty Name="Smena1" Relationship="Self.FK__Smena__WaiterID__2C3393D0" FromRole="Users" ToRole="Smena" />
+          <NavigationProperty Name="UserSmena" Relationship="Self.FK__UserSmena__UserI__300424B4" FromRole="Users" ToRole="UserSmena" />
+        </EntityType>
+        <EntityType Name="UserSmena">
+          <Key>
+            <PropertyRef Name="UserSmenaID" />
+          </Key>
+          <Property Name="UserSmenaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="SmenaID" Type="Int32" />
+          <NavigationProperty Name="Smena" Relationship="Self.FK__UserSmena__Smena__30F848ED" FromRole="UserSmena" ToRole="Smena" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__UserSmena__UserI__300424B4" FromRole="UserSmena" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__OrderItem__Order__398D8EEE">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__WaiterID__33D4B598">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderStat__Order__3C69FB99">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderStatusHistory" Type="Self.OrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderStatusHistory">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderStat__Chang__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OrderStatusHistory" Type="Self.OrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="OrderStatusHistory">
+              <PropertyRef Name="ChangedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Smena__CookID__2D27B809">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Smena" Type="Self.Smena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Smena">
+              <PropertyRef Name="CookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Smena__WaiterID__2C3393D0">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Smena" Type="Self.Smena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Smena">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserSmena__Smena__30F848ED">
+          <End Role="Smena" Type="Self.Smena" Multiplicity="0..1" />
+          <End Role="UserSmena" Type="Self.UserSmena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smena">
+              <PropertyRef Name="SmenaID" />
+            </Principal>
+            <Dependent Role="UserSmena">
+              <PropertyRef Name="SmenaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserSmena__UserI__300424B4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserSmena" Type="Self.UserSmena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserSmena">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NasyrovTaskSeptemberEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItems" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="OrderStatusHistory" EntityType="Self.OrderStatusHistory" />
+          <EntitySet Name="Smena" EntityType="Self.Smena" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserSmena" EntityType="Self.UserSmena" />
+          <AssociationSet Name="FK__OrderItem__Order__398D8EEE" Association="Self.FK__OrderItem__Order__398D8EEE">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__WaiterID__33D4B598" Association="Self.FK__Orders__WaiterID__33D4B598">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderStat__Order__3C69FB99" Association="Self.FK__OrderStat__Order__3C69FB99">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderStatusHistory" EntitySet="OrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderStat__Chang__3E52440B" Association="Self.FK__OrderStat__Chang__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OrderStatusHistory" EntitySet="OrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Smena__CookID__2D27B809" Association="Self.FK__Smena__CookID__2D27B809">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Smena" EntitySet="Smena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Smena__WaiterID__2C3393D0" Association="Self.FK__Smena__WaiterID__2C3393D0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Smena" EntitySet="Smena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserSmena__Smena__30F848ED" Association="Self.FK__UserSmena__Smena__30F848ED">
+            <End Role="Smena" EntitySet="Smena" />
+            <End Role="UserSmena" EntitySet="UserSmena" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserSmena__UserI__300424B4" Association="Self.FK__UserSmena__UserI__300424B4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSmena" EntitySet="UserSmena" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище NasyrovTaskSeptemberModelContainer" CdmEntityContainer="NasyrovTaskSeptemberEntities">
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.OrderItems">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MenuItem" ColumnName="MenuItem" />
+                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatusHistory">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.OrderStatusHistory">
+              <MappingFragment StoreEntitySet="OrderStatusHistory">
+                <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ChangedByUserID" ColumnName="ChangedByUserID" />
+                <ScalarProperty Name="ChangedAt" ColumnName="ChangedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smena">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Smena">
+              <MappingFragment StoreEntitySet="Smena">
+                <ScalarProperty Name="SmenaID" ColumnName="SmenaID" />
+                <ScalarProperty Name="SmenaDate" ColumnName="SmenaDate" />
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+                <ScalarProperty Name="CookID" ColumnName="CookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSmena">
+            <EntityTypeMapping TypeName="NasyrovTaskSeptemberModel.UserSmena">
+              <MappingFragment StoreEntitySet="UserSmena">
+                <ScalarProperty Name="UserSmenaID" ColumnName="UserSmenaID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SmenaID" ColumnName="SmenaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
