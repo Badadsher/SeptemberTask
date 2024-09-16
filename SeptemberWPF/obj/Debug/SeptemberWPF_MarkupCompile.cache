@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-F:\Users\Алишер\Downloads\SeptemberTask-main\SeptemberTask-main\SeptemberWPF\obj\Debug\
+C:\Users\Heisenberg\Downloads\SeptemberTask\SeptemberWPF\obj\Debug\
 SeptemberWPF
 none
 false
 DEBUG;TRACE
-F:\Users\Алишер\Downloads\SeptemberTask-main\SeptemberTask-main\SeptemberWPF\App.xaml
+C:\Users\Heisenberg\Downloads\SeptemberTask\SeptemberWPF\App.xaml
 7589999166
 2-54588943
 22-950981966
-19707124149
+19522050709
 MainWindow.xaml;Pages\AddEmp.xaml;Pages\Admin.xaml;Pages\AsignSmena.xaml;Pages\Coockp.xaml;Pages\Login.xaml;Pages\Wai.xaml;
 
 True
