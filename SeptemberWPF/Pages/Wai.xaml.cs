@@ -21,11 +21,11 @@ namespace SeptemberWPF.Pages
     /// </summary>
     public partial class Wai : Page
     {
-        private int _currentUserId;
+        private int currentU;
         public Wai(int userId)
         {
             InitializeComponent();
-            _currentUserId = userId;
+            currentU = userId;
             LoadOrderItems();
         }
 
@@ -33,18 +33,15 @@ namespace SeptemberWPF.Pages
         {
             var orderItems = AppData.db.OrderItems
                 .Join(AppData.db.Orders, oi => oi.OrderID, o => o.OrderID, (oi, o) => new { oi, o })
-                .Where(joined => joined.o.WaiterID == _currentUserId)
+                .Where(joined => joined.o.WaiterID == currentU)
                 .Select(joined => joined.oi)
                 .ToList();
             OrderItemsDataGrid.ItemsSource = orderItems;
         }
 
-        private void AddOrderItem_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void CreateOrder_Click(object sender, RoutedEventArgs e)
+        private void CreateOrder(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -52,13 +49,13 @@ namespace SeptemberWPF.Pages
                     decimal.TryParse(PriceTextBox.Text, out decimal price))
                 {
                     var order = AppData.db.Orders
-                        .FirstOrDefault(o => o.WaiterID == _currentUserId && o.OrderStatus == "Принят");
+                        .FirstOrDefault(o => o.WaiterID == currentU && o.OrderStatus == "Принят");
 
                     if (order == null)
                     {
                         order = new Orders
                         {
-                            WaiterID = _currentUserId,
+                            WaiterID = currentU,
                             OrderStatus = "Принят",
                             TotalAmount = 0,
                             OrderDate = DateTime.Now
@@ -90,7 +87,7 @@ namespace SeptemberWPF.Pages
 
                 var newOrder = new Orders
                 {
-                    WaiterID = _currentUserId,
+                    WaiterID = currentU,
                     OrderStatus = "Готовится",
                     OrderDate = DateTime.Now,
                     TotalAmount = Convert.ToDecimal(PriceTextBox.Text)

@@ -28,7 +28,7 @@ namespace SeptemberWPF.Pages
             _refreshEmployeeTable = refreshEmployeeTable;
         }
 
-        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        private void AddEmpl(object sender, RoutedEventArgs e)
         {
             string fullName = txtFullName.Text;
             string username = txtUsername.Text;
@@ -67,6 +67,8 @@ namespace SeptemberWPF.Pages
                 MessageBox.Show("Ошибка");
             }
         }
+
+     
     }
 }
     

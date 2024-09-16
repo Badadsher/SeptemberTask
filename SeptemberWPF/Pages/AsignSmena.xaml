@@ -83,7 +83,7 @@
                 <TextBlock Text="Повар:" FontWeight="SemiBold"/>
                 <ComboBox Name="CookComboBox" DisplayMemberPath="FullName" SelectedValuePath="UserID"/>
             </StackPanel>
-            <Button Style="{DynamicResource ButtonStyle1}" Content="Назначить смену" Width="150" Height="40" Background="Black" Foreground="White" FontWeight="Bold" Click="AssignShift_Click"/>
+            <Button Style="{DynamicResource ButtonStyle1}" Content="Назначить смену" Width="150" Height="40" Background="Black" Foreground="White" FontWeight="Bold" Click="Assig"/>
             <Button  Style="{DynamicResource ButtonStyle1}" Content="Назад" Width="150" Height="42" Click="BackButton_Click" Background="Red" Foreground="White"/>
         </StackPanel>
     </Grid>

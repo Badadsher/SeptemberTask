@@ -124,8 +124,8 @@
             <TabItem Header="Сотрудники">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
-                        <Button Style="{DynamicResource ButtonStyle2}" Content="Добавить сотрудника" Width="150" Click="AddEmployee_Click" Margin="0,0,10,0" Background="#FF72FF16"/>
-                        <Button Style="{DynamicResource ButtonStyle2}" Content="Восстановить сотрудника" Width="150" Click="ReinstateEmployee_Click" Foreground="White" Background="#FFFF8925" />
+                        <Button Style="{DynamicResource ButtonStyle2}" Content="Добавить сотрудника" Width="150" Click="AddEmp" Margin="0,0,10,0" Background="#FF72FF16"/>
+                        <Button Style="{DynamicResource ButtonStyle2}" Content="Восстановить сотрудника" Width="150" Click="ReinstateEmp" Foreground="White" Background="#FFFF8925" />
                     </StackPanel>
 
                     <DataGrid Name="EmployeeGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,50,10,10" Background="#FFD49B9B">
@@ -162,7 +162,7 @@
 
             <TabItem Header="Смены">
                 <Grid OpacityMask="#FFFFFEF2">
-                    <Button Style="{DynamicResource ButtonStyle1}" Content="Назначить смену" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,10,0,0" Click="AssignShift_Click" Background="#FF309E27" Foreground="White"/>
+                    <Button Style="{DynamicResource ButtonStyle1}" Content="Назначить смену" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,10,0,0" Click="AssignShif" Background="#FF309E27" Foreground="White"/>
                     <DataGrid Name="ShiftsGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,50,10,10" OpacityMask="Black" Background="#FFFFDFDF">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ShiftID}" Width="50"/>

@@ -158,7 +158,7 @@
                          Text="Количество" Background="#FFFF6262"/>
                 <TextBox x:Name="PriceTextBox" Width="200" Height="25" 
                          Text="Цена" Background="#FFFF6262"/>
-                <Button Style="{DynamicResource ButtonStyle1}" Content="Создать заказ" Width="200" Height="30" Click="CreateOrder_Click" Foreground="White" Background="Black"/>
+                <Button Style="{DynamicResource ButtonStyle1}" Content="Создать заказ" Width="200" Height="30" Click="CreateOrder" Foreground="White" Background="Black"/>
             </StackPanel>
         </GroupBox>
 

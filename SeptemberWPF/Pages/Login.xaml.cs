@@ -21,22 +21,22 @@ namespace SeptemberWPF.Pages
     /// </summary>
     public partial class Login : Page
     {
-        private MainWindow _mainWindow;
+        private MainWindow mW;
 
         public Login(MainWindow mainWindow)
         {
             InitializeComponent();
-            _mainWindow = mainWindow;
+            mW = mainWindow;
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void LogiClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                string username = txtUsername.Text;
-                string password = txtPassword.Password;
+                string usern = txtUsername.Text;
+                string pass = txtPassword.Password;
 
-                var user = AppData.db.Users.FirstOrDefault(u => u.Username == username && u.PasswordHash == password);
+                var user = AppData.db.Users.FirstOrDefault(u => u.Username == usern && u.PasswordHash == pass);
 
                 if (user != null)
                 {
@@ -45,13 +45,13 @@ namespace SeptemberWPF.Pages
                     switch (user.Role)
                     {
                         case "Администратор":
-                            _mainWindow.MainFrame.Navigate(new Admin());
+                            mW.MainFrame.Navigate(new Admin());
                             break;
                         case "Официант":
-                            _mainWindow.MainFrame.Navigate(new Wai(user.UserID));
+                            mW.MainFrame.Navigate(new Wai(user.UserID));
                             break;
                         case "Повар":
-                            _mainWindow.MainFrame.Navigate(new Coockp(user.UserID));
+                            mW.MainFrame.Navigate(new Coockp(user.UserID));
                             break;
                     }
                 }

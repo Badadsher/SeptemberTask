@@ -81,6 +81,6 @@
             <ComboBoxItem Content="Повар"/>
         </ComboBox>
 
-        <Button Style="{DynamicResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="175" Margin="254,323,0,0" Click="AddEmployee_Click" Height="34" Background="#FF4310FF" Foreground="White"/>
+        <Button Style="{DynamicResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="175" Margin="254,323,0,0" Click="AddEmpl" Height="34" Background="#FF4310FF" Foreground="White"/>
     </Grid>
 </Page>

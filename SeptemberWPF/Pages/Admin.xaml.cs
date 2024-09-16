@@ -57,7 +57,7 @@ namespace SeptemberWPF.Pages
             ShiftsGrid.ItemsSource = shiftsData.ToList();
         }
 
-        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        private void AddEmp(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace SeptemberWPF.Pages
             }
         }
 
-        private void ReinstateEmployee_Click(object sender, RoutedEventArgs e)
+        private void ReinstateEmp(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -114,9 +114,11 @@ namespace SeptemberWPF.Pages
             }
         }
 
-        private void AssignShift_Click(object sender, RoutedEventArgs e)
+        private void AssignShif(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AsignSmena());
         }
+
+     
     }
 }

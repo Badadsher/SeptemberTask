@@ -37,7 +37,7 @@ namespace SeptemberWPF.Pages
             }
         }
 
-        private void AssignShift_Click(object sender, RoutedEventArgs e)
+        private void Assig(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -87,5 +87,7 @@ namespace SeptemberWPF.Pages
                 NavigationService.GoBack();
             }
         }
+
+      
     }
 }

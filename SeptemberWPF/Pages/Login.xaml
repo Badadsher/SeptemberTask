@@ -170,6 +170,6 @@
         <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,202,0,0" Height="36" Width="56"/>
         <PasswordBox Style="{DynamicResource PasswordBoxStyle1}"  Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="322" Margin="260,226,0,0" Height="25"/>
 
-        <Button Style="{DynamicResource ButtonStyle1}" Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="340,288,0,0" Click="btnLogin_Click" Height="28" Background="Black" Foreground="White"/>
+        <Button Style="{DynamicResource ButtonStyle1}" Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="340,288,0,0" Click="LogiClick" Height="28" Background="Black" Foreground="White"/>
     </Grid>
 </Page>

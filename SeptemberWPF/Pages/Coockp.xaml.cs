@@ -22,11 +22,11 @@ namespace SeptemberWPF.Pages
     /// </summary>
     public partial class Coockp : Page
     {
-        private int _currentUserId;
+        private int currentU;
         public Coockp(int userId)
         {
             InitializeComponent();
-            _currentUserId = userId;
+            currentU = userId;
             LoadOrders();
             LoadWaiters();
         }
