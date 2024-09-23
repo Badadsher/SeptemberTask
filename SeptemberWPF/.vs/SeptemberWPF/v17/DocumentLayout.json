@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\pages\\admin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|c:\\users\\heisenberg\\downloads\\septembertask\\septemberwpf\\pages\\admin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|solutionrelative:pages\\admin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|solutionrelative:pages\\asignsmena.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|c:\\users\\heisenberg\\downloads\\septembertask\\septemberwpf\\pages\\addemp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\pages\\addemp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E241482-D533-41F3-8A4A-635CAA51CAEF}|SeptemberWPF.csproj|solutionrelative:pages\\addemp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -85,8 +85,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 266,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 7,
@@ -107,8 +111,7 @@
               "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\Pages\\AsignSmena.xaml",
               "RelativeToolTip": "Pages\\AsignSmena.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-16T10:32:36.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-16T10:32:36.168Z"
             },
             {
               "$type": "Document",
@@ -119,8 +122,7 @@
               "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\Pages\\Admin.xaml",
               "RelativeToolTip": "Pages\\Admin.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-16T10:32:36.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-16T10:32:36.169Z"
             },
             {
               "$type": "Document",
@@ -215,12 +217,7 @@
               "RelativeToolTip": "Pages\\AddEmp.xaml.cs*",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T10:32:39.671Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "WhenOpened": "2024-09-16T10:32:39.671Z"
             },
             {
               "$type": "Document",
@@ -242,8 +239,7 @@
               "ToolTip": "C:\\Users\\Heisenberg\\Downloads\\SeptemberTask\\SeptemberWPF\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-16T10:32:39.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-16T10:32:39.667Z"
             },
             {
               "$type": "Document",
